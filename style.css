@@ -1,0 +1,177 @@
+
+@media screen and (max-width: 707px){
+
+/* Section HTML - Accueil Menu */
+
+.menu-mobile {
+    position: relative;
+    z-index: 5;
+}
+
+.icon-linkedin i {
+    color: #1766C2;
+    padding-top: 15px;
+}
+
+.icon-linkedin i:hover {
+    color: #1766C2;
+    transform: scale(1.4);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+
+/* Style pour le bouton de fermeture */
+.close-nav {
+    color: red;
+    font-size: 30px;
+    cursor: pointer;
+    position: relative;
+    left: 260px; /* Aligne le bouton à droite dans le menu */
+}
+
+.close-nav:hover {
+    color: rgb(206, 110, 110);
+}
+
+/* Style pour le bouton menu mobile */
+.mobile-menu-toggle {
+    background: none;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    color: black;
+    display: block; /* Assure que l'icône du menu est visible par défaut */
+    padding-right: 40px;
+    position: relative;
+    top: -35px;
+    left: 160px; /* Aligne le bouton à droite dans le menu */
+}
+
+.mobile-menu-toggle:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+/* Style pour le menu mobile avec positionnement */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Menu hors de l'écran à gauche */
+    width: 300px; 
+    height: 100%; 
+    border-right: 3px solid black;
+    background-color: #f1f5f8;
+    /* filter:brightness(90%) ; */
+    opacity: 0.6;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transition: left 0.8s ease; /* Transition douce pour le déplacement */
+}
+
+/* Quand le menu est ouvert, il apparaît à gauche */
+.mobile-nav.open {
+    left: 0; /* Le menu glisse depuis la gauche */
+}
+
+.mobile-nav a {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-decoration: none;
+    padding-top: 15px;
+    color: black;
+}
+
+.mobile-nav a:hover {
+    text-decoration: underline;
+}
+
+.mobile-nav i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.mobile-nav i:hover {
+    transform: scale(1.4);
+    transition: transform 0.3s;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.icon-github i {
+    color: #222222; 
+    background-color: #fff;
+    border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s; /* Transition douce */
+}
+
+.icon-github {
+    padding-top: 10px;
+}
+
+.icon-github i:hover {
+    color: #fff;
+    background-color: #222222;
+    border-radius: 50%;
+    transform: scale(1.5);
+    transition: transform 0.3s;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.btns {
+    display: none;
+}
+
+.btns1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* .position-canvas {
+    height: 50vh;
+} */
+
+canvas {
+    height: 80vh;
+
+}
+
+}
+
+@media screen and (min-width: 707px) and (max-width: 1014px){
+
+    .position-canvas {
+        height: 70vh;
+    }
+
+    .btns1{
+        display: none;
+    }
+
+    .menu-mobile {
+        display: none;
+    }
+
+    .burger {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1014px){
+    .menu-mobile {
+        display: none;
+    }
+
+    .position-canvas {
+        height: 70vh;
+    }
+
+    .burger {
+        display: none;
+    }
+}

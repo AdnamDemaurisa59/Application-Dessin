@@ -43,9 +43,9 @@
     color: black;
     display: block; /* Assure que l'icône du menu est visible par défaut */
     padding-right: 40px;
-    position: relative;
-    top: -35px;
-    left: 160px; /* Aligne le bouton à droite dans le menu */
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Aligne le bouton à droite dans le menu */
 }
 
 .mobile-menu-toggle:hover {
@@ -64,7 +64,7 @@
     border-right: 3px solid black;
     background-color: #f1f5f8;
     /* filter:brightness(90%) ; */
-    opacity: 0.6;
+    /* opacity: 0.6; */
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -125,25 +125,74 @@
     display: none;
 }
 
+/* .btns1 label {
+    margin-top: 15px;
+} */
+
+
+/* .position-canvas {
+    height: 50vh;
+} */
+
+
 .btns1 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: scroll;
 }
 
-/* .position-canvas {
-    height: 50vh;
-} */
+.btns1 button{
+    border-radius: 15px;
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.btns1 button:hover{
+    background-color: #2980b9;
+}
+
+.btns1 input {
+    margin-top: 10px;
+}
 
 canvas {
     height: 80vh;
 
 }
 
+#insertAnotherDrawingMobile {
+    display: none;
+}
+
+label{
+    border-radius: 15px;
+    padding: 10px 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 }
 
 @media screen and (min-width: 707px) and (max-width: 1014px){
+
+    label{
+        border-radius: 15px;
+        padding: 10px 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
 
     .position-canvas {
         height: 70vh;
@@ -163,6 +212,17 @@ canvas {
 }
 
 @media screen and (min-width: 1014px){
+
+    label{
+        border-radius: 15px;
+        padding: 5px 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
     .menu-mobile {
         display: none;
     }

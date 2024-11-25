@@ -3,54 +3,110 @@
 
  // Gestion des événements
  const canvas = document.querySelector('canvas');
-
  const ctx = canvas.getContext("2d");
+ 
  let isDrawing = false;
  let horizX = 0;
  let vertiY = 0;
 
  // Récupération des éléments du DOM
  const b0 = document.getElementById('chooseColor');
+ const b0M = document.getElementById('chooseColorMobile');
+ 
  const chooseWidth = document.getElementById('chooseWidth');
+ const chooseWidthMobile = document.getElementById('chooseWidthMobile');
+
  let b1 = document.getElementById('chooseRectangle');
+ let b1M = document.getElementById('chooseRectangleMobile');
+
  let b2 = document.getElementById('chooseCircle');
+ let b2M = document.getElementById('chooseCircleMobile');
+
  let b3 = document.getElementById('chooseTriangle');
+ let b3M = document.getElementById('chooseTriangleMobile');
+
  let b4 = document.getElementById('bgcBlack');
+ let b4M = document.getElementById('bgcBlackMobile');
+
  let b5 = document.getElementById('drawing');
+ let b5M = document.getElementById('drawingMobile');
+
  let b6 = document.getElementById('deleteAll');
+ let b6M = document.getElementById('deleteAllMobile');
+
  let b7 = document.getElementById('save');
+ let b7M = document.getElementById('saveMobile');
+
  let b8 = document.getElementById('addMyDrawing');
+ let b8M = document.getElementById('addMyDrawingMobile');
+
  let b9 = document.getElementById('insertAnotherDrawing');
+ let b9M = document.getElementById('insertAnotherDrawingMobile');
+ 
  let b10 = document.getElementById('closeDraw');
+ let b10M = document.getElementById('closeDrawMobile');
+
  
 
 let shapes = [];
-let selectedShape = null;
-let resizing = false;
+let shapesMobile = [];
 
-const selectCursor = document.getElementById('chooseCursor');
+let selectedShape = null;
+let selectedShapeMobile = null;
+
+let resizing = false;
+let resizingMobile = false;
+
+// let stylo = document.querySelector('pen.png')
+// let crayon = document.querySelector('crayon.png')
+// let pinceau = document.querySelector('paintbrush.png')
+// let gomme = document.querySelector('eraser.png');
+
+// stylo = (url="./images-nonLibre-Flaticon/3d-pen.png")
+// crayon = (url="./images-nonLibre-Flaticon/pencil.png")
+// pinceau = (url="./images-nonLibre-Flaticon/paintbrush.png")
+// gomme = (url="./images-nonLibre-Flaticon/eraser.png")
+
+const selectCursor = document.querySelectorAll('#chooseCursor, #chooseCursorMobile');
 // const canvas = document.getElementById('drawingArea'); // Supposons que votre zone de dessin ait cet ID
 
-selectCursor.addEventListener('change', (event) => {
+selectCursor.forEach(select=>select.addEventListener('change', (event) => {
     const cursorValue = event.target.value;
     canvas.style.cursor = cursorValue || 'default'; // Rétablir 'default' si aucun n'est sélectionné
-});
+}));
 
 
 //Selection de la couleur
  let currentColor = '#000000';
- b0.addEventListener('input', changeColor);
+ let currentColorMobile = '#000000';
 
- function changeColor() {
+ b0.addEventListener('input', changeColor);
+ b0M.addEventListener('input', changeColor);
+
+ function changeColor(e) {
     currentColor = b0.value;
+    currentColorMobile = b0M.value
+    // ctx.strokeStyle = parseInt(e.target.value);
+
 }
 
 // Choisir la largeur du trait
 let currentWidth = 10;
-chooseWidth.addEventListener('input', changeWidth);
+let currentWidthMobile = 10;
 
-function changeWidth() {
-    ctx.lineWidth = parseInt(chooseWidth.value);
+// chooseWidthMobile.addEventListener('input', changeWidthMobile);
+
+// function changeWidthMobile() {
+//     ctx.lineWidth = parseInt(chooseWidthMobile.value);
+//     console.log(ctx.lineWidth);
+    
+// }
+
+chooseWidth.addEventListener('input', changeWidth);
+chooseWidthMobile.addEventListener('input', changeWidth);
+
+function changeWidth(e) {
+    ctx.lineWidth = parseInt(e.target.value);
 }
 
 
@@ -79,10 +135,10 @@ canvas.addEventListener('mousedown', (e) => {
 // // Commencer un nouveau dessin
 canvas.addEventListener('mousemove', (e) => {
     if (isDrawing) {
-        const size = canvas.getBoundingClientRect();
-        ctx.lineWidth = parseInt(chooseWidth.value);
+        const size = canvas.getBoundingClientRect(); 
+        //ctx.lineWidth = parseInt(chooseWidth.value) && parseInt(chooseWidthMobile.value);
         ctx.lineCap = 'round';
-        ctx.strokeStyle = currentColor;
+        ctx.strokeStyle = currentColor || /* && */currentColorMobile; 
         ctx.beginPath();
         ctx.moveTo(horizX, vertiY);
         ctx.lineTo(e.clientX - size.left, e.clientY - size.top);

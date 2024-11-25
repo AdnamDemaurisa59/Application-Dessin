@@ -12,9 +12,11 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body{
             overflow: hidden;
         }
+        
         .position-canvas {
             display: flex;
             justify-content: center;
@@ -43,6 +45,7 @@
         }
         
         .btns button{
+            border-radius: 15px;
             padding: 5px 10px;
             background-color: #3498db;
             color: white;
@@ -53,28 +56,7 @@
         .btns button:hover{
             background-color: #2980b9;
         }
-
-        .btns1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-         
-            overflow: scroll;
-        }
-
-        .btns1 button{
-            padding: 5px 10px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-
-        .btns1 button:hover{
-            background-color: #2980b9;
-        }
-
+        
         #info{
             position: fixed;
             top: 90px;
@@ -123,7 +105,6 @@
         }
     </style>
     <link rel="stylesheet" href="./style.css">
-
 </head>
 <body>
 
@@ -131,67 +112,17 @@
         <h1>Application Dessin</h1>
     </header>
 
+    <section>
+        <div class="modale"></div>
+    </section>
+
     <div class="burger">
         <button class="mobile-menu-toggle">
             <i class="fa-solid fa-bars"></i>              
         </button> 
     </div>
 
-    <section class="code-for-mobile">
-        <div class="menu-mobile" id="">
-            <nav class="mobile-nav">
-                <div class="close-nav" id="close-nav">
-                    <i class="fa-solid fa-xmark"></i>
-                </div>
-                <div class="btns1">
-                    <label for="chooseColor">Choisir une couleur :</label>
-                    <input type="color" class="chooseColor" id="chooseColor" value="#000000">
-                    <label for="chooseWidth">Choisir la largeur du trait : </label>
-                    <input type="number" class="chooseWidth" id="chooseWidth" value="1" min="1" max="100">
-                    <label for="chooseCursor">Choisissez votre cursor :</label>
-                    <select name="chooseCursor" id="chooseCursor">
-                        <option value="default">Flèche classique</option>
-                        <option value="pointer">Main classique</option>
-                        <option value="crosshair">Croix</option>
-                        <option value="move">Déplacer</option>
-                        <option value="text">Sélection de texte</option>
-                        <option value="grab">Main ouverte</option>
-                        <option value="grabbing">Main fermée</option>
-                        <option value="url('pen.png')">Stylo</option>
-                        <option value="url('pencil.png')">Crayon</option>
-                        <option value="url('paint-brush.png')">Pinceau</option>
-                        <option value="url('eraser.png')">Gomme</option>
-                    </select>
-                    <!-- DIFFERENT OPTIONS -->
-                    <button class="drawing" id="drawing">Dessiner</button>
-                    <button class="chooseRectangle" id="chooseRectangle">Rectangle</button>
-                    <button class="chooseCircle" id="chooseCircle">Cercle</button>
-                    <button class="chooseTriangle" id="chooseTriangle">Triangle</button>
-                    <button class="bgcBlack" id="bgcBlack">Couleur de fond : Noir</button>
-                    <button class="deletteAll" id="deleteAll">Tout effacer</button>
-                    <!-- DESSIN TERMINER -->
-                    <button class="save" id="save">Sauvegarder</button>
-                    <!-- AJOUTER LE DESSIN A MON ORDI -->
-                     <button class="closeDraw" id="closeDraw">Fermer la forme du dessin</button>
-                    <button class="addMyDrawing" id="addMyDrawing">Enregistrer le dessin</button>
-                    <!-- <a href="" id="download" download="myDrawing.png">Télécharger</a> -->
-                    <!-- AJOUTER UN AUTRE DESSIN -->
-                    <label for="insertAnotherDrawing">Insérer un autre dessin</label>
-                    <input type="file" class="insertAnotherDrawing" id="insertAnotherDrawing" title="" placeholder="">
-                </div>
-                <div class="icon-github">
-                    <a href="" target="_blank">
-                        <i class="fa-brands fa-github"></i> GITHUB 
-                    </a>
-                </div>
-                <div class="icon-linkedin">
-                    <a href="https://www.linkedin.com/in/adnam-koud-demaurisa-447379194/" target="_blank">
-                        <i class="fa-brands fa-linkedin"></i> Koud Demaurisa Adnam</a>
-                </div>
-            </nav>
-        </div>
-    </section>
-    
+    <!-- Code HTML pour ecran Tablette & Ordinateur -->
     <section class="">
         <div class="btns">
             <label for="chooseColor">Choisir une couleur :</label>
@@ -207,10 +138,10 @@
                 <option value="text">Sélection de texte</option>
                 <option value="grab">Main ouverte</option>
                 <option value="grabbing">Main fermée</option>
-                <option value="url('pen.png')">Stylo</option>
-                <option value="url('pencil.png')">Crayon</option>
-                <option value="url('paint-brush.png')">Pinceau</option>
-                <option value="url('eraser.png')">Gomme</option>
+                <option value="url('./images-nonLibre-Flaticon/3d-pen.png'), auto">Stylo</option>
+                <option value="url('./images-nonLibre-Flaticon/fountain-pen.png'), auto">Crayon</option>
+                <option value="url('./images-nonLibre-Flaticon/pencil.png'), auto">Pinceau</option>
+                <option value="url('./images-nonLibre-Flaticon/pencil2.png'), auto">Gomme</option>
             </select>
             <!-- DIFFERENT OPTIONS -->
             <button class="drawing" id="drawing">Dessiner</button>
@@ -225,7 +156,6 @@
              <button class="closeDraw" id="closeDraw">Fermer la forme du dessin</button>
             <button class="addMyDrawing" id="addMyDrawing">Enregistrer le dessin</button>
             <!-- <a href="" id="download" download="myDrawing.png">Télécharger</a> -->
-            <!-- AJOUTER UN AUTRE DESSIN -->
             <label for="insertAnotherDrawing">Insérer un autre dessin</label>
             <input type="file" class="insertAnotherDrawing" id="insertAnotherDrawing" title="" placeholder="">
         </div>
@@ -235,7 +165,62 @@
         <div class="position-canvas">
             <canvas id="drawingArea" width="" height=""></canvas>
         </div>
+    </section>
 
+        <!-- Code HTML pour ecran Mobile -->
+    <section class="code-for-mobile">
+        <div class="menu-mobile" id="">
+            <nav class="mobile-nav">
+                <div class="close-nav" id="close-nav">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="btns1">
+                    <label for="chooseColorMobile">Choisir une couleur :</label>
+                    <input type="color" class="chooseColorMobile" id="chooseColorMobile" value="#000000">
+                    <label for="chooseWidthMobile">Choisir la largeur du trait : </label>
+                    <input type="number" class="chooseWidthMobile" id="chooseWidthMobile" value="1" min="1" max="100">
+                    <label for="chooseCursorMobile">Choisissez votre cursor :</label>
+                    <select name="chooseCursorMobile" id="chooseCursorMobile">
+                        <option value="default">Flèche classique</option>
+                        <option value="pointer">Main classique</option>
+                        <option value="crosshair">Croix</option>
+                        <option value="move">Déplacer</option>
+                        <option value="text">Sélection de texte</option>
+                        <option value="grab">Main ouverte</option>
+                        <option value="grabbing">Main fermée</option>
+                        <option value="url('./images-nonLibre-Flaticon/3d-pen.png'), auto">Stylo</option>
+                        <option value="url('./images-nonLibre-Flaticon/pencil.png'), auto">Crayon</option>
+                        <option value="url('./images-nonLibre-Flaticon/paintbrush.png'), auto">Pinceau</option>
+                        <option value="url('./images-nonLibre-Flaticon/eraser.png'), auto">Gomme</option>
+                    </select>
+                    <!-- DIFFERENT OPTIONS -->
+                    <button class="drawingMobile" id="drawingMobile">Dessiner</button>
+                    <button class="chooseRectangleMobile" id="chooseRectangleMobile">Rectangle</button>
+                    <button class="chooseCircleMobile" id="chooseCircleMobile">Cercle</button>
+                    <button class="chooseTriangleMobile" id="chooseTriangleMobile">Triangle</button>
+                    <button class="bgcBlackMobile" id="bgcBlackMobile">Couleur de fond : Noir</button>
+                    <button class="deleteAllMobile" id="deleteAllMobile">Tout effacer</button>
+                    <!-- DESSIN TERMINER -->
+                    <button class="saveMobile" id="saveMobile">Sauvegarder</button>
+                    <!-- AJOUTER LE DESSIN A MON ORDI -->
+                     <button class="closeDrawMobile" id="closeDrawMobile">Fermer la forme du dessin</button>
+                    <button class="addMyDrawingMobile" id="addMyDrawingMobile">Enregistrer le dessin</button>
+                    <!-- <a href="" id="download" download="myDrawing.png">Télécharger</a> -->
+                    <!-- AJOUTER UN AUTRE DESSIN -->
+                    <label for="insertAnotherDrawingMobile">Insérer un autre dessin</label>
+                    <input type="file" class="insertAnotherDrawingMobile" id="insertAnotherDrawingMobile" title="" placeholder="">
+                </div>
+                <div class="icon-github">
+                    <a href="" target="_blank">
+                        <i class="fa-brands fa-github"></i> GITHUB 
+                    </a>
+                </div>
+                <div class="icon-linkedin">
+                    <a href="https://www.linkedin.com/in/adnam-koud-demaurisa-447379194/" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i> Koud Demaurisa Adnam</a>
+                </div>
+            </nav>
+        </div>
     </section>
 
     <script>

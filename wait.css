@@ -1,0 +1,104 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(#fff, #aaa);
+    /* color: #889dcc; */
+    transition: background 1s ease, color 1s ease;
+  }
+
+  .fade-out {
+    animation: fadeOut 1s forwards;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .title {
+    /* font-size: 2rem; */
+    margin-bottom: 2rem;
+    animation: fadeIn 2s ease-in-out;
+    color: #889dcc;
+  }
+  
+  .portfolio-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    /* color: #fff; */
+    background: #889dcc;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container button {
+    color: #fff;
+  }
+  
+  .portfolio-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .portfolio-button:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .portfolio-button:hover {
+    background: #6679a5;
+    transform: translateY(-5px);
+  }
+  
+  /* Animation de fade-in */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Animation de fade-out pour la transition vers la deuxième page */
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Deuxième page - après redirection */
+  body.fade-out {
+    background: radial-gradient(#fff, #aaa);
+    color: #889dcc;
+  }
+
+

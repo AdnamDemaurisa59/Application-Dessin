@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Dessin</title>
+    <script src="./accueil.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *, ::before, ::after{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            overflow: hidden;
+        }
+        
+        .position-canvas {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+            overflow: auto;
+            width: 100vw;
+        }
+
+        canvas{
+            margin: 10px;
+            border: 5px solid black;
+            border-radius: 20px;
+            /*cursor:;*/
+        }
+
+        .btns{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .btns button{
+            border-radius: 15px;
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .btns button:hover{
+            background-color: #2980b9;
+        }
+        
+        #info{
+            position: fixed;
+            top: 90px;
+            left: 1px;
+            padding: 2px;
+            background-color: #f1c40f;
+            border-radius: 5px;
+            border: 2px solid black;
+            width: 100%;
+            height: 1px;
+        }
+
+        h1{
+            text-align: center;
+            margin-top: 10px;
+            font-size: 35px;
+            color: #444444;
+            background: #FFFFFF;
+            text-shadow: 1px 0px 1px #CCCCCC, 0px 1px 1px #EEEEEE, 2px 1px 1px #CCCCCC, 1px 2px 1px #EEEEEE, 3px 2px 1px #CCCCCC, 2px 3px 1px #EEEEEE, 4px 3px 1px #CCCCCC, 3px 4px 1px #EEEEEE, 5px 4px 1px #CCCCCC, 4px 5px 1px #EEEEEE, 6px 5px 1px #CCCCCC, 5px 6px 1px #EEEEEE, 7px 6px 1px #CCCCCC;
+        }
+
+        #insertAnotherDrawing {
+            display: none;
+        }
+
+        label {
+            padding: 5px 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        label:hover {
+            background-color: #2980b9;
+        }
+
+        .drawing {
+            background-color: green;
+            color: white;
+            border: none;
+        }
+
+        .drawing:hover {
+            background-color: darkgreen;
+        }
+    </style>
+    <link rel="stylesheet" href="./accueil.css">
+</head>
+<body>
+
+    <header>
+        <h1>Application Dessin</h1>
+    </header>
+
+    <section>
+        <div class="modale"></div>
+    </section>
+
+    <div class="burger">
+        <button class="mobile-menu-toggle">
+            <i class="fa-solid fa-bars"></i>              
+        </button> 
+    </div>
+
+    <!-- Code HTML pour ecran Tablette & Ordinateur -->
+    <section class="">
+        <div class="btns">
+            <label for="chooseColor">Choisir une couleur :</label>
+            <input type="color" class="chooseColor" id="chooseColor" value="#000000">
+            <label for="chooseWidth">Choisir la largeur du trait : </label>
+            <input type="number" class="chooseWidth" id="chooseWidth" value="1" min="1" max="100">
+            <label for="chooseCursor">Choisissez votre cursor :</label>
+            <select name="chooseCursor" id="chooseCursor">
+                <option value="default">Flèche classique</option>
+                <option value="pointer">Main classique</option>
+                <option value="crosshair">Croix</option>
+                <option value="move">Déplacer</option>
+                <option value="text">Sélection de texte</option>
+                <option value="grab">Main ouverte</option>
+                <option value="grabbing">Main fermée</option>
+                <option value="url('./images-nonLibre-Flaticon/3d-pen.png'), auto">Stylo</option>
+                <option value="url('./images-nonLibre-Flaticon/fountain-pen.png'), auto">Crayon</option>
+                <option value="url('./images-nonLibre-Flaticon/pencil.png'), auto">Pinceau</option>
+                <option value="url('./images-nonLibre-Flaticon/pencil2.png'), auto">Gomme</option>
+            </select>
+            <!-- DIFFERENT OPTIONS -->
+            <button class="drawing" id="drawing">Dessiner</button>
+            <button class="chooseRectangle" id="chooseRectangle">Rectangle</button>
+            <button class="chooseCircle" id="chooseCircle">Cercle</button>
+            <button class="chooseTriangle" id="chooseTriangle">Triangle</button>
+            <button class="bgcBlack" id="bgcBlack">Couleur de fond : Noir</button>
+            <button class="deletteAll" id="deleteAll">Tout effacer</button>
+            <!-- DESSIN TERMINER -->
+            <button class="save" id="save">Sauvegarder</button>
+            <!-- AJOUTER LE DESSIN A MON ORDI -->
+             <button class="closeDraw" id="closeDraw">Fermer la forme du dessin</button>
+            <button class="addMyDrawing" id="addMyDrawing">Enregistrer le dessin</button>
+            <!-- <a href="" id="download" download="myDrawing.png">Télécharger</a> -->
+            <label for="insertAnotherDrawing">Insérer un autre dessin</label>
+            <input type="file" class="insertAnotherDrawing" id="insertAnotherDrawing" title="" placeholder="">
+        </div>
+    
+        <!-- <div id="info"></div> -->
+    
+        <div class="position-canvas">
+            <canvas id="drawingArea" width="" height=""></canvas>
+        </div>
+    </section>
+
+        <!-- Code HTML pour ecran Mobile -->
+    <section class="code-for-mobile">
+        <div class="menu-mobile" id="">
+            <nav class="mobile-nav">
+                <div class="close-nav" id="close-nav">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="btns1">
+                    <label for="chooseColorMobile">Choisir une couleur :</label>
+                    <input type="color" class="chooseColorMobile" id="chooseColorMobile" value="#000000">
+                    <label for="chooseWidthMobile">Choisir la largeur du trait : </label>
+                    <input type="number" class="chooseWidthMobile" id="chooseWidthMobile" value="1" min="1" max="100">
+                    <label for="chooseCursorMobile">Choisissez votre cursor :</label>
+                    <select name="chooseCursorMobile" id="chooseCursorMobile">
+                        <option value="default">Flèche classique</option>
+                        <option value="pointer">Main classique</option>
+                        <option value="crosshair">Croix</option>
+                        <option value="move">Déplacer</option>
+                        <option value="text">Sélection de texte</option>
+                        <option value="grab">Main ouverte</option>
+                        <option value="grabbing">Main fermée</option>
+                        <option value="url('./images-nonLibre-Flaticon/3d-pen.png'), auto">Stylo</option>
+                        <option value="url('./images-nonLibre-Flaticon/pencil.png'), auto">Crayon</option>
+                        <option value="url('./images-nonLibre-Flaticon/paintbrush.png'), auto">Pinceau</option>
+                        <option value="url('./images-nonLibre-Flaticon/eraser.png'), auto">Gomme</option>
+                    </select>
+                    <!-- DIFFERENT OPTIONS -->
+                    <button class="drawingMobile" id="drawingMobile">Dessiner</button>
+                    <button class="chooseRectangleMobile" id="chooseRectangleMobile">Rectangle</button>
+                    <button class="chooseCircleMobile" id="chooseCircleMobile">Cercle</button>
+                    <button class="chooseTriangleMobile" id="chooseTriangleMobile">Triangle</button>
+                    <button class="bgcBlackMobile" id="bgcBlackMobile">Couleur de fond : Noir</button>
+                    <button class="deleteAllMobile" id="deleteAllMobile">Tout effacer</button>
+                    <!-- DESSIN TERMINER -->
+                    <button class="saveMobile" id="saveMobile">Sauvegarder</button>
+                    <!-- AJOUTER LE DESSIN A MON ORDI -->
+                     <button class="closeDrawMobile" id="closeDrawMobile">Fermer la forme du dessin</button>
+                    <button class="addMyDrawingMobile" id="addMyDrawingMobile">Enregistrer le dessin</button>
+                    <!-- <a href="" id="download" download="myDrawing.png">Télécharger</a> -->
+                    <!-- AJOUTER UN AUTRE DESSIN -->
+                    <label for="insertAnotherDrawingMobile">Insérer un autre dessin</label>
+                    <input type="file" class="insertAnotherDrawingMobile" id="insertAnotherDrawingMobile" title="" placeholder="">
+                </div>
+                <div class="icon-github">
+                    <a href="" target="_blank">
+                        <i class="fa-brands fa-github"></i> GITHUB 
+                    </a>
+                </div>
+                <div class="icon-linkedin">
+                    <a href="https://www.linkedin.com/in/adnam-koud-demaurisa-447379194/" target="_blank">
+                        <i class="fa-brands fa-linkedin"></i> Koud Demaurisa Adnam</a>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sélectionne les éléments nécessaires
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const closeNav = document.getElementById('close-nav');
+    
+            // Lorsque le bouton du menu est cliqué
+            menuToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('open');
+                menuToggle.classList.add('hidden');
+            });
+    
+            // Lorsque le bouton de fermeture est cliqué
+            closeNav.addEventListener('click', function() {
+                mobileNav.classList.remove('open');
+                menuToggle.classList.remove('hidden');
+            });
+    
+            // Si un clic est fait en dehors du menu ouvert, cela ferme le menu
+            document.addEventListener('click', function(event) {
+                if (!menuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+                    if (mobileNav.classList.contains('open')) {
+                        mobileNav.classList.remove('open');
+                        menuToggle.classList.remove('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

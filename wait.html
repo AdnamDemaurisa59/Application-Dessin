@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./wait.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="title">Adnam KOUD DEMAURISA <br> DEVELOPPEUR FRONT-END</h1>
+        <button class="portfolio-button">Cliquer pour accéder à mon portfolio</button>
+      </div>
+    
+      <script>
+        function redirectToPortfolio() {
+          // Ajouter une animation de transition avant la redirection
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = ""; // Remplace ceci par le lien réel de ton portfolio
+          }, 1000); // Le délai doit correspondre à la durée de l'animation
+        }
+      </script>
+</body>
+</html>

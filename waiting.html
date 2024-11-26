@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechargement</title>
+    <link rel="stylesheet" href="./waiting.css">
+</head>
+<body>
+    
+    <div class="name">
+        ADNAM KOUD DEMAURISA
+    </div>
+
+    <script>
+        const name = document.querySelector('.name');
+       // un tableau vide pour stocker les valeurs d'ombres
+    let shadows = [];
+    
+    // Longueur maximale de l'effet d'ombre (nombre de couches)
+    const length = 15;
+
+    // L'angle d'inclinaison des ombres (multiplicateur pour les décalages)
+    const angle = 1;
+
+    // Boucle pour générer les couches d'ombres successives
+    for (let i = 1; i <= length; i++) {
+        // Ajout d'une ombre au tableau sous la forme "x-offset y-offset couleur"
+        shadows.push(`${i}px ${i * angle}px #aaa`);
+    }
+
+    // Associe toutes les ombres du tableau en une chaîne, séparées par des virgules
+    // Cela permet de créer plusieurs ombres en une seule déclaration CSS
+    name.style.textShadow = shadows.join(', ');
+      </script>
+
+</body>
+</html>

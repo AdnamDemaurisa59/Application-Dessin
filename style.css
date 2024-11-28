@@ -14,7 +14,7 @@
     /* font-family: 'Roboto'; */
     font-family: "Bebas Neue", sans-serif;
     /* font-size: 12vmin; */
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 700;
     margin-bottom: 40px;
     animation: shadow_style 3s infinite;
@@ -157,3 +157,25 @@
     }
   }
   
+@media screen and (max-width: 768px) {
+  .name {
+    font-size: 23px;
+  }
+
+  .portfolio-button {
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+  .name {
+    font-size: 30px;
+  }
+
+  .portfolio-button {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+}
